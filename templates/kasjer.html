@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}Flasky{% endblock %}
+{% block page_content %}
+<div class="page-header">
+ <h1>{{imie|upper}} {{nazwisko|upper}}</h1>
+</div>
+<a class="btn btn-default" href="{{ url_for('pracownicy') }}">
+ Pracownicy
+</a>
+<a class="btn btn-default" href="{{ url_for('sale') }}">
+ Sale
+</a>
+<a class="btn btn-default" href="{{ url_for('filmy') }}">
+ Filmy
+</a>
+<a class="btn btn-default" href="{{ url_for('seanse') }}">
+ Dodaj Seanse
+</a>
+<a class="btn btn-default" href="{{ url_for('seanse_usun') }}">
+ Usuń Seanse
+</a>
+<a class="btn btn-default" href="{{ url_for('rezerwacje') }}">
+ Rezerwacje
+</a>
+
+
+{% endblock %}

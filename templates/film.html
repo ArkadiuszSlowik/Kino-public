@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}Flasky{% endblock %}
+{% block page_content %}
+<div class="page-header">
+ <h1>{{ title }}</h1>
+</div>
+<h3> Reżyser: {{ director }} </h3>
+<p>{{ description }}</p>
+<p> Typ filmu: {{ type }}</p>
+<p> Czas trwania: {{ duration }}</p>
+<p> Rok produkcji: {{ year }}</p>
+{% endblock %}

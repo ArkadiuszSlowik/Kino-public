@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}Flasky{% endblock %}
+{% block page_content %}
+<div class="page-header">
+ <h1> Zarezerwuj miejsca </h1>
+</div>
+{{ wtf.quick_form(form) }}
+<p>Wolne miejsca: {{free_seats}}</p>
+<h3> {{title}}</h3>
+<h4> Reżyser: {{ director }} </h4>
+<p>Dzień: {{day}}</p>
+<p>Godzina rozpoczęcia: {{start_time}}</p>
+<p>Sala: {{hall}}</p>
+<p>{{ description }}</p>
+<p> Typ filmu: {{ type }}</p>
+<p> Czas trwania: {{ duration }}</p>
+<p> Rok produkcji: {{ year }}</p>
+ <a class="btn btn-default" href="{{ url_for('przegladaj_seanse') }}">
+ Zobacz pozostałe seanse
+</a>
+
+{% endblock %}
+
+
+

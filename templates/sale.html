@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}Flasky{% endblock %}
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.css">
+
+{% block page_content %}
+<div class="page-header">
+ <h1> Dodaj salę </h1>
+</div>
+{{ wtf.quick_form(form) }}
+<h3>Lista sal</h3>
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Numer</th>
+        <th>Liczba miejsc</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+{% endblock %}
+{% block scripts %}
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      table = $('#data').DataTable({
+        ajax: '/api/data_sale',
+        columns: [
+            {data: 'numer_sali', orderable: true, searchable: true},
+            {data: 'liczba_miejsc', orderable: true, searchable: true},
+        ],
+      });
+
+    });
+
+</script>
+{% endblock %}

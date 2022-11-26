@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}Flasky{% endblock %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.css">
+{% block page_content %}
+<div class="page-header">
+ <h1> Dodaj seans </h1>
+</div>
+<p style="color:red;"> Uwaga przypominamy naszym kasjerom o obowiązujących zasadach: każdy seans powinien zaczynać i kończyś się danego dnia.</p>
+{{ wtf.quick_form(addscreening_form) }}
+<h3>Lista seansów</h3>
+<table id="data" class="table table-striped">
+    <thead>
+      <tr>
+       <th>Dzień</th>
+       <th>Godzina</th>
+       <th>Tytuł</th>
+       <th>Reżyser</th>
+       <th>Typ filmu</th>
+       <th>Czas wyswietlania</th>
+       <th>Sala</th>
+       <th>Wolne miejsca</th>
+
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+<h3>Lista sal</h3>
+<table id="data2" class="table table-striped">
+    <thead>
+      <tr>
+          <th>Numer</th>
+        <th>Liczba miejsc</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+<h3>Lista filmów</h3>
+<table id="data3" class="table table-striped">
+    <thead>
+      <tr>
+          <th>id</th>
+        <th>Tytul</th>
+        <th>Rok produkcji</th>
+        <th>Rezyser</th>
+        <th>Typ</th>
+        <th>Czas wyswietlania</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+{% endblock %}
+{% block scripts %}
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      table = $('#data').DataTable({
+        ajax: '/api/data_seanse',
+        columns: [
+          {data: 'dzien', orderable: true, searchable: true},
+          {data: 'godzina', orderable: true, searchable: true},
+          {data: 'tytul', orderable: true, searchable: true},
+          {data: 'rezyser', orderable: true, searchable: true},
+          {data: 'typ', orderable: true, searchable: true},
+          {data: 'czas_wyswietlania', orderable: true, searchable: true},
+          {data: 'sala', orderable: true, searchable: true},
+          {data: 'wolne_miejsca', orderable: true, searchable: true}
+
+        ],
+      });
+
+    });
+
+        $(document).ready(function () {
+      table = $('#data2').DataTable({
+        ajax: '/api/data_sale',
+        columns: [
+          {data: 'numer_sali', orderable: true, searchable: true},
+          {data: 'liczba_miejsc', orderable: true, searchable: true},
+
+        ],
+      });
+
+    });
+
+    $(document).ready(function () {
+      table = $('#data3').DataTable({
+        ajax: '/api/data_filmy',
+        columns: [
+        {data: 'id_film', orderable: true, searchable: true},
+          {data: 'tytul', orderable: true, searchable: true},
+          {data: 'rok_produkcji', orderable: true, searchable: true},
+          {data: 'rezyser', orderable: true, searchable: true},
+          {data: 'typ', orderable: true, searchable: true},
+          {data: 'czas_wyswietlania', orderable: true},
+        ],
+      });
+
+    });
+
+            $('#data3').on('click', 'tbody tr', function () {
+            const row = table.row(this).data()
+            function senduserinfo(){
+                const request = new XMLHttpRequest()
+                request,open(`/film/${JSON.stringify(row)}`, 'POST')
+                request.send();
+            }
+            senduserinfo();
+
+            document.location.href = 'film';
+        });
+
+  </script>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}Flasky{% endblock %}
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.css">
+
+{% block page_content %}
+<div class="page-header">
+ <h1> Seanse </h1>
+</div>
+<a class="btn btn-default pull-right" href="{{ url_for('przegladaj_filmy') }}">
+ Dowiedz się więcej na temat filmów!
+</a>
+
+<p> Naciśnij wiersz, aby przejść do rezerwacji miejsc.</p>
+<p> Naciśnij nazwę kolumny, aby po niej sortować.</p>
+
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+
+       <th>Dzień</th>
+       <th>Godzina</th>
+       <th>Tytuł</th>
+       <th>Reżyser</th>
+       <th>Typ filmu</th>
+       <th>Czas wyswietlania</th>
+       <th>Sala</th>
+       <th>Wolne miejsca</th>
+
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+
+{% endblock %}
+{% block scripts %}
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      table = $('#data').DataTable({
+        ajax: '/api/data_seanse',
+        columns: [
+          {data: 'dzien', orderable: true, searchable: true},
+          {data: 'godzina', orderable: true, searchable: true},
+          {data: 'tytul', orderable: true, searchable: true},
+          {data: 'rezyser', orderable: true, searchable: true},
+          {data: 'typ', orderable: true, searchable: true},
+          {data: 'czas_wyswietlania', orderable: true, searchable: true},
+          {data: 'sala', orderable: true, searchable: true},
+          {data: 'wolne_miejsca', orderable: true, searchable: true}
+
+        ],
+      });
+
+    });
+
+            $('#data').on('click', 'tbody tr', function () {
+            const row = table.row(this).data()
+            function senduserinfo(){
+                const request = new XMLHttpRequest()
+                request,open(`/zarezerwuj/${JSON.stringify(row)}`, 'POST')
+                request.send();
+            }
+            senduserinfo();
+
+            document.location.href = 'zarezerwuj';
+        });
+  </script>
+{% endblock %}

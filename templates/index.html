@@ -1,0 +1,18 @@
+<!--  Using Flask-WTF and Flask-Bootstrap to render a form -->
+
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}Flasky{% endblock %}
+{% block page_content %}
+<div class="page-header">
+ <h1>Witamy na stronie kina!</h1>
+</div>
+ <p>Wybierz sekcję przeznaczoną dla Ciebie.</p>
+ <a class="btn btn-default" href="{{ url_for('klient') }}">
+ Klient
+</a>
+<a class="btn btn-default" href="{{ url_for('logowanie_kasjer') }}">
+ Kasjer
+</a>
+
+{% endblock %}
