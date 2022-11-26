@@ -1,3 +1,12 @@
+<h2>Web app</h2
+
+https://kino.herokuapp.com/ | flask + sqlalchemy + wtforms
+
+Przykładowe dane logowania - kasjer:
+login: 123456
+haslo: 123456
+
+
 Jest to aplikacja zaliczeniowa stworzona przeze mnie na przedmiot Bazy Danych prowadzony na wydziale MIMUW:
 https://usosweb.mimuw.edu.pl/kontroler.php?_action=katalog2/przedmioty/pokazPrzedmiot&kod=1000-134BAD
 Szczegóły problemu do rozwiązania znajdują się w ostatniej sekcji tego pliku.
