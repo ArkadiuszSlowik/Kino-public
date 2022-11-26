@@ -12,8 +12,8 @@ tym samym pozostałe komponenty w dużej mierze narzucały się same.
 
 <h2> Logowanie - kasjer </h2>
 Przykładowe dane logowania:
-**login**: 123456
-**haslo**: 123456
+login: 123456
+haslo: 123456
 
 <h2> Opis zadania </h2>
 
