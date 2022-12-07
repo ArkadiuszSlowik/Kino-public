@@ -58,9 +58,9 @@ Do obowiązków pracowników obsługi należy
 
 <h2> Opis zawartości </h2>
 
-/ - strona główna, tutaj decydujemy się czy wcielamy się w rolę kasjera czy klienta
+    strona główna, tutaj decydujemy się czy wcielamy się w rolę kasjera czy klienta
 
-klient - panel klienta, tu decydujemy o kolejnych akcjach
+    klient - panel klienta, tu decydujemy o kolejnych akcjach
 
     przegladaj_filmy - tutaj możemy zobaczyć informacje o filmach, w szczegolnosci przeniesc sie do panelu z opisem filmu
     
@@ -72,10 +72,10 @@ klient - panel klienta, tu decydujemy o kolejnych akcjach
     
     zarezerwuj/<dane_seansu> - tutaj możemy zarezerwować miejsca na wybrany seans
 
-logowanie_kasjer - tutaj logujemy się do panelu kasjera, jeśli nie jesteśmy zalogowani to nie mamy dostępu do panelu kasjera
-i dalszych akcji
+    logowanie_kasjer - tutaj logujemy się do panelu kasjera, jeśli nie jesteśmy zalogowani to nie mamy dostępu do panelu kasjera
+    i dalszych akcji
 
-kasjer - panel kasjera, tu decydujemy o kolejnych akcjach
+    kasjer - panel kasjera, tu decydujemy o kolejnych akcjach
 
     pracownicy - tutaj możemy podejrzeć listę pracowników oraz dodać nowego pracownika,
         sprawdzamy by nowy pracownik nie miał danych logowania lub żeby jego dane logowania były unikalne
