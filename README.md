@@ -1,5 +1,5 @@
 <h1> W skrócie </h1>
-Web app: https://kino.herokuapp.com/ | flask + sqlalchemy + wtforms
+Web app: flask + sqlalchemy + wtforms
 
 <h2> Technologia </h2>
 
